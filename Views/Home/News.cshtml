@@ -1,0 +1,55 @@
+﻿@model  NewsPortal.Models.News
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_NewsLayout.cshtml";
+}
+<style>
+    img {
+        width: 100%;
+    }
+    :root {
+        --boxShadow--: 0px 0px 9px 3px #54313152;
+    }
+    .LeftContainer {
+        padding: 2rem;
+        border-radius: 13px;
+    }
+    .Head {
+        border-radius: 8px;
+        box-shadow: var(--boxShadow--);
+        text-align: center;
+        padding: 1rem;
+        background: #003366;
+        color: #fff;
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+    
+    .right-section {
+       
+    }
+    
+</style>
+<div class="row">
+    <div class="col-md-9">
+        <div style=" box-shadow: var(--boxShadow--);" class="LeftContainer">
+            <div style=" font-weight: 600;">
+            @Html.Raw(Model.NewsTitle)
+                 </div>
+            <p style="text-align:end;font-size:0.8rem"><span style="font-weight:700">News Date </span>:- @Model.PublishDatetime</p>
+            
+            <img src="@Model.Url@Model.Server_CoverPath" alt="Alternate Text" />
+            <div><p style="font-size:1rem"><span style="font-weight:700">Publisher Name</span>:- Furkan</p>
+                <br>
+                @Html.Raw(Model.NewDescription)
+            </div>
+        </div>
+    </div>
+    <div class="right-section col-md-3">
+        <div class="Head">
+            Articles
+        </div>
+        <div></div>
+    </div>
+</div>
+

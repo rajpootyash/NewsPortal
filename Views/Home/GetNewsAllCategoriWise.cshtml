@@ -1,0 +1,37 @@
+﻿@model List<NewsPortal.Models.News>
+
+@{
+    ViewBag.Title = "GetNewsAllCategoriWise";
+    Layout = "~/Views/Shared/_NewsLayout.cshtml";
+}
+<style>
+    .MainDiv img{
+        width: 20.5rem;
+        height: 10rem;
+    }
+    .MainDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+        box-shadow: 0px 0px 9px 3px #54313152;
+        padding: 1rem;
+    }
+        .MainDiv div {
+            text-align: center;
+
+            width: 20.6rem;
+            height: 3rem;
+            overflow: hidden;
+        }
+
+    </style>
+@Html.Raw(ViewBag.HtmlString)
+
+<script>
+    function GetNews(Id) {
+        window.location.href = `/Home/News?Id=${Id}`
+
+    }
+</script>

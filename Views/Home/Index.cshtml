@@ -1,0 +1,174 @@
+﻿@model List<NewsPortal.Models.CategriesSubCategries>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NewsLayout.cshtml";
+}
+<style>
+    :root {
+        --boxShadow--: 0px 0px 9px 3px #54313152;
+    }
+
+    img {
+        width: 100%;
+        aspect-ratio: 1 / 0.5;
+    }
+
+    .MainDiv {
+        position: relative;
+        overflow: hidden;
+        opacity: 0.8;
+        padding: 0.5rem;
+        box-shadow: var(--boxShadow--);
+        border-radius: 6px;
+    }
+
+        .MainDiv div {
+            padding-left: 1rem;
+            position: absolute;
+            top: 8rem;
+            padding-right: 1rem;
+            /* margin-left: 1rem; */
+            font-size: 1rem;
+            font-family: fangsong;
+            color: #fff;
+        }
+
+    .Headding {
+        color: #fff;
+        background: #003366;
+        padding: 0.3rem;
+        border-radius: 8px;
+        box-shadow: var(--boxShadow--);
+    }
+
+    .imgLetest {
+        width: 13rem;
+        height: 7rem;
+        padding: 0.5rem;
+    }
+
+    .LetesTitle {
+        width: 13rem;
+        padding: 0.5rem;
+        overflow: hidden;
+        height: 5rem;
+    }
+
+    .LetestNewsChild {
+        overflow: hidden;
+        height: 13rem;
+        box-shadow: var(--boxShadow--);
+        border-radius: 6px;
+    }
+
+    .LetestNews {
+        gap: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .LetestNewsChild:hover {
+        transform: scale(1.1);
+        transition: all;
+        transition-duration: 0.2s;
+    }
+    .card:hover {
+        transform: scale(1.04);
+        transition: all;
+        transition-duration: 0.2s;
+    }
+    .card {
+        box-shadow: var(--boxShadow--);
+    }
+    .Flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .card-title {
+        overflow: hidden;
+        height: 2.2rem;
+        font-size: 1rem;
+    }
+    #CardSDigitalNews {
+        margin-left: 1.5rem;
+    }
+    @@media (max-width: 575.98px) {
+        #CardSDigitalNews {
+            height: 6rem !important;
+            padding-top: 0 !important;
+            margin-left:0rem;
+        }
+    }
+
+    @@media (min-width: 576px) and (max-width: 767.98px) {
+        #card-bodyDigita {
+            height: 6rem !important;
+            padding-top: 0 !important;
+        }
+    }
+
+    .card-bodyDigital {
+        overflow: hidden;
+        margin-left: 1rem;
+        height: 7rem;
+    }
+
+
+</style>
+@* Top 8 News *@
+@Html.Raw(ViewBag.HtmlString)
+<br>
+<p class="Headding ">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+        <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z" />
+        @* Top 8 News *@
+    </svg>&nbsp;&nbsp; लेटेस्ट न्यूज
+</p>
+<br/>
+
+<div class="LetestNews">
+    @foreach (var item in ViewBag.LetestNews)
+    {
+        <div class="LetestNewsChild" onclick="GetNews(@item.NewsID)"><img class="imgLetest" src="@item.Url@item.Server_CoverPath" loading="lazy"><div class="LetesTitle">@item.NewsTitle</div></div>
+
+    }
+</div>
+<br/>
+
+
+<p class="Headding">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16" style="color: #fd0000;">
+        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
+    </svg>&nbsp;&nbsp; डिजिटल न्यूज़
+</p>
+<br>
+<div class="Flex">
+@foreach (var item in ViewBag.DigitalNews)
+{
+   
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img class="imgLetest" loading="lazy" src="@item.Url@item.Server_CoverPath">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body" id="CardSDigitalNews" style=" ">
+                <h5 class="card-title">@item.NewsTitle</h5>
+               
+                <p class="card-text"><small class="text-body-secondary"><button onclick="GetNews(@item.NewsID)" class="btn btn-outline-danger">और पढ़ें</button></small></p>
+            </div>
+        </div>
+    </div>
+</div>
+}
+    </div>
+<script>
+    function GetNews(Id) {
+        window.location.href = `/Home/News?Id=${Id}`
+
+    }
+</script>
+
+
+
